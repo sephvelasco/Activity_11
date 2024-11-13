@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Update APT Cache
+    apt:
+      update_cache: true
+
+  - name: Install Apache
+    apt:
+      name: apache2
+      state: latest
+
+  - name: Install MariaDB
+    apt:
+      name: mariadb-server
+      state: latest
+
+  - name: Enable Apache Service
+    service:
+      name: apache2
+      state: started
+      enabled: true
+
+  - name: Enable MariaDB Service
+    service:
+      name: mariadb
+      state: started
+      enabled: true

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Add User to Docker Group
+    ansible.builtin.user:
+      name: velasco
+      groups: docker
+      append: true
+
+  - name: Reset SSH Connection
+    ansible.builtin.meta: reset_connection
